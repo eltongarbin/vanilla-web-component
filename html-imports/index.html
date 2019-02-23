@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Document</title>
     <link rel="import" href="notice.html" id="notice" />
+    <link rel="import" href="my-component.html" />
   </head>
   <body>
     <script>
@@ -12,5 +13,6 @@
       const content = $link.import.querySelector('.notice-frame');
       document.body.appendChild(content.cloneNode(true));
     </script>
+    <my-component></my-component>
   </body>
 </html>
