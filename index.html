@@ -12,8 +12,23 @@
     <script src="components/rw-star-rating.js"></script>
     <script src="components/rw-slide-menu.js"></script>
     <style>
+      html,
       body {
         margin: 0;
+      }
+      rw-star-rating {
+        font-size: 1.5em;
+        --star-default-color: #333;
+        --star-selected-color: red;
+        --star-hover-color: blue;
+      }
+      rw-slide-menu {
+        --menu-width: 100%;
+        --title-styles: {
+          background-color: #333;
+          color: #ccc;
+          font-size: 2em;
+        }
       }
       li {
         background-color: black !important;
