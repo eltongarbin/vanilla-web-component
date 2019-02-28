@@ -1,0 +1,36 @@
+{
+  "name": "vanilla-web-component",
+  "version": "1.0.0",
+  "description": "",
+  "directories": {
+    "example": "examples"
+  },
+  "main": "index.js",
+  "dependencies": {
+    "@webcomponents/webcomponentsjs": "^2.2.7"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.2.3",
+    "@babel/core": "^7.3.4",
+    "@babel/preset-env": "^7.3.4",
+    "serve": "^10.1.2"
+  },
+  "scripts": {
+    "build:deps": "babel node_modules/@webcomponents -d dist/libs",
+    "build:src": "babel src -d dist/libs/components",
+    "build": "npm run build:deps && npm run build:src",
+    "start": "serve -s dist",
+    "dev": "npm run build && npm run start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/eltongarbin/vanilla-web-component.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/eltongarbin/vanilla-web-component/issues"
+  },
+  "homepage": "https://github.com/eltongarbin/vanilla-web-component#readme"
+}

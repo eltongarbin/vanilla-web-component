@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <script src="libs/webcomponentsjs/webcomponents-bundle.js" defer></script>
+    <style>
+      html,
+      body {
+        margin: 0;
+      }
+      rw-star-rating {
+        font-size: 1.5em;
+        --star-default-color: #333;
+        --star-selected-color: red;
+        --star-hover-color: blue;
+      }
+      rw-slide-menu {
+        --menu-width: 100%;
+        --title-styles: {
+          background-color: #333;
+          color: #ccc;
+          font-size: 2em;
+        }
+      }
+      li {
+        background-color: black !important;
+      }
+    </style>
+  </head>
+  <body>
+    <my-component></my-component>
+    <rw-random-quote interval="1000"></rw-random-quote>
+    <rw-poll></rw-poll>
+    <rw-component-skeleton></rw-component-skeleton>
+    <p>Star Rating: <rw-star-rating id="sr" value="3"></rw-star-rating></p>
+    <rw-slide-menu id="menu">
+      <h3 slot="title">Nav Menu</h3>
+      <a href="#">One</a>
+      <a href="#">Two</a>
+      <a href="#">Three</a>
+    </rw-slide-menu>
+    <div id="controls" style="text-align: right">
+      <button class="btn" data-action="open">Open Menu</button>
+      <button class="btn" data-action="close">Close Menu</button>
+    </div>
+    <script>
+      function appendScriptTag(path) {
+        var $script = document.createElement('script');
+        $script.src = path;
+        document.head.appendChild($script);
+      }
+
+      window.addEventListener('WebComponentsReady', function() {
+        appendScriptTag('libs/components/my-component.js');
+        appendScriptTag('libs/components/rw-random-quote.js');
+        appendScriptTag('libs/components/rw-poll.js');
+        appendScriptTag('libs/components/rw-component-skeleton.js');
+        appendScriptTag('libs/components/rw-star-rating.js');
+        appendScriptTag('libs/components/rw-slide-menu.js');
+
+        if (window.ShadyCSS && ShadyCSS.CustomStyleInterface) {
+          ShadyCSS.CustomStyleInterface.addCustomStyle(
+            document.querySelector('style.document-style')
+          );
+        }
+
+        var $controls = document.getElementById('controls');
+        var $menu = document.getElementById('menu');
+
+        $controls.addEventListener('click', function(event) {
+          switch (event.target.dataset.action) {
+            case 'open':
+              $menu.open = true;
+              break;
+            case 'close':
+              $menu.open = false;
+              break;
+          }
+        });
+
+        $menu.addEventListener('menu-opened', function(event) {
+          console.log('MENU OPENED!', event);
+        });
+
+        $menu.addEventListener('menu-closed', function(event) {
+          console.log('MENU CLOSED!', event);
+        });
+      });
+    </script>
+  </body>
+</html>

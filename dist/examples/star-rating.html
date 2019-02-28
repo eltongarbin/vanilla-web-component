@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <script
+      src="../libs/webcomponentsjs/webcomponents-bundle.js"
+      defer
+    ></script>
+    <style class="document-style">
+      html,
+      body {
+        font-size: 1.5em;
+      }
+
+      rw-star-rating {
+        --star-default-color: #333;
+        --star-selected-color: red;
+        --star-hover-color: blue;
+      }
+    </style>
+  </head>
+  <body>
+    <rw-star-rating id="sr" value="3"></rw-star-rating>
+    <script>
+      window.addEventListener('WebComponentsReady', function() {
+        var $script = document.createElement('script');
+        $script.src = '../libs/components/rw-star-rating.js';
+        document.head.appendChild($script);
+
+        if (window.ShadyCSS && ShadyCSS.CustomStyleInterface) {
+          ShadyCSS.CustomStyleInterface.addCustomStyle(
+            document.querySelector('style.document-style')
+          );
+        }
+      });
+    </script>
+  </body>
+</html>
